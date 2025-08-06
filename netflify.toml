@@ -1,0 +1,25 @@
+############################
+#  Netlify configuration   #
+############################
+
+[build]
+  # What Netlify runs when you trigger a production build
+  command   = "npm run build"   # → `vite build` underneath
+  publish   = "dist"            # Vite outputs to /dist
+
+########################################
+#  “netlify dev” – local dev settings  #
+########################################
+[dev]
+  command   = "vite"             # starts the Vite dev server
+  targetPort = 5173              # default Vite port
+  port       = 8888              # where Netlify proxy listens
+  autoLaunch = true              # open browser automatically
+
+########################################
+#  Optional redirects (SPA fallback)   #
+########################################
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200
